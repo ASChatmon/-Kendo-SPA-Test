@@ -169,7 +169,7 @@ var detail = new kendo.View("detail-template", { model: detailModel });
 
 var sushi = new kendo.Router({
     init: function() {
-         console.log("router init")
+        console.log("router init");
         layout.render("#application");
     }
 });
