@@ -1,4 +1,14 @@
-// models / data
+// constants
+const operationalStatuses = {
+    GREEN: 'green',
+    YELLOW: 'yellow',
+    RED: 'red'
+};
+
+// TODO: Move this enum to be pulled from some source
+var operationalStatus = operationalStatuses.RED;
+
+// data
 
 //var items = new kendo.data.DataSource({
 //    schema: 
@@ -14,6 +24,7 @@
 //        } 
 //    }
 //});
+
 var menu = [
     {
         "id": 1,
@@ -196,8 +207,7 @@ var items = new kendo.data.DataSource({
     data: menu
 });
 
-var operationalStatus = "GREEN";
-
+// models
 var cart = kendo.observable({
     total: function() {
         var price = 0,
@@ -242,12 +252,22 @@ sushi.route("/", function() {
 
     layout.showIn("#content", index);
     
-    var template = kendo.template("<div class='#= status#'>#= status #</div>");
-    var data = { status: "green" }; //A value in JavaScript/JSON
-    var result = template(data); //Pass the data to the compiled template
-    $("#status").html(result); //Append the result
+    var template = kendo.template("<div class='page-status #= status#'>#= text #</div>");
+    var data = { status: operationalStatus, text: GetStatusText(operationalStatus) }; 
+    var result = template(data);
+    $("#status").html(result);
 });
 
+function GetStatusText(status) {
+    switch (status) {
+        case operationalStatuses.GREEN:
+            return "All Systems Operational";
+        case operationalStatuses.YELLOW:
+            return "Some System Degradation";
+        case operationalStatuses.RED:
+            return "Severe System Outage";
+    }
+}
 
 $(function() {
     sushi.start();
