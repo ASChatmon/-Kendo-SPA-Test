@@ -29,31 +29,31 @@ var thirdPartyData = [
     {
         "id": 1,
         "name": "Sashimi salad",
-        "status": STATUSES.GREEN,
+        "status": "thirdparty " +STATUSES.GREEN,
         "image": "sashimi-salad.jpg",
     },
     {
         "id": 2,
         "name": "CFX",
         "image": "chirashi-sushi.jpg",
-        "status": STATUSES.RED
+        "status": "thirdparty " +STATUSES.RED
     },
     {
         "id": 3,
         "name": "TF",
-        "status": STATUSES.GREEN,
+        "status": "thirdparty " +STATUSES.GREEN,
         "image": "seaweed-salad.jpg"
     },
     {
         "id": 4,
         "name": "MG",
-        "status": STATUSES.YELLOW,
+        "status": "thirdparty " +STATUSES.YELLOW,
         "image": "edamame.jpg"
     },
     {
         "id": 5,
         "name": "WUBS",
-        "status": STATUSES.GREEN,
+        "status": "thirdparty " + STATUSES.GREEN,
         "image": "miso-soup.jpg"
     }
 ];

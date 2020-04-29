@@ -48,12 +48,12 @@
     </script>
 
     <script type="text/x-kendo-template" id="item">
-        <li class="products">
-            <a class="view-details" href="\#/menu/#: id #">
+        <li data-bind="attr: { class: status }">
+            <span class="view-details">
                 <img class="main-image" src="/images/200/#= image #" alt="#: name#" title="#: name #" />
                 <strong data-bind="text: name"></strong>
                 <span class="price"><span data-bind="text: status"></span></span>
-            </a>
+            </span>
         </li>
     </script>
 
