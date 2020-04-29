@@ -120,7 +120,7 @@ h1 a {
     padding: 1rem 1.25rem;
     color: white;
     font-weight: 500;
-    font-size: 1.25rem;
+    font-size: 1.7rem;
     text-shadow: 0 1px 0 rgba(0,0,0,0.1);
     letter-spacing: 1px;
 }
@@ -131,7 +131,7 @@ h1 a {
 
 .page-status.green::before {
     background: url(images/BigCheck.svg) center center;
-    background-size: 1.25rem;
+    background-size: 1.5rem;
     background-repeat: no-repeat;
 }
 
@@ -141,7 +141,7 @@ h1 a {
 
 .page-status.yellow::before {
     -webkit-mask: url('images/Lifesaver.svg') center center;
-    -webkit-mask-size: 1.7rem;
+    -webkit-mask-size: 1.9rem;
     -webkit-mask-repeat: no-repeat;
 }
 
@@ -151,15 +151,15 @@ h1 a {
 
 .page-status.red::before {
     -webkit-mask: url('images/Alert-white.svg') center center;
-    -webkit-mask-size: 1.2rem;
+    -webkit-mask-size: 1.5rem;
     -webkit-mask-repeat: no-repeat;
 }
 
 .page-status::before {
     display: inline-block;
     content: "";
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
     margin-right: .5em;
     vertical-align: text-bottom;
     background-color: white;
@@ -180,6 +180,7 @@ a {
     overflow: hidden;
     margin-bottom: 20px;
     border-bottom: 0px;
+    font-size: 1.5rem;
 }
  
 .k-grid-header {
@@ -208,13 +209,21 @@ td.details {
     color: var(--bw-alert-yellow);
 }
 .k-i-info {
-    font-size: 10px;
-    margin-bottom: 8px;
+   margin-bottom: 0.8rem;
 }
 
 /* Third party section */
+#main-section ul {
+    margin: auto;
+    width: fit-content;
+    max-width: inherit;
+    border-right: none;
+}
+
 #main-section ul li {
-    float: left;
+    /*float: left;*/
+    margin:auto;
+    display: inline-block;
 }
 ul, ol {
     list-style: none;
@@ -255,7 +264,7 @@ h1, h2, h3, #main-nav, #main-nav li, ul, ul li {
     background: var(--bw-alert-yellow);
 }
 
-.thirdparty::before{
+.thirdparty::before {
     display: inline-block;
     content: "";
     width: 1.25rem;
@@ -263,11 +272,17 @@ h1, h2, h3, #main-nav, #main-nav li, ul, ul li {
     margin-right: .5em;
     vertical-align: text-bottom;
     background-color: white;
+    padding-top: 20px;
 }
 
 .view-details, .view-details:hover {
     display: block;
     position: relative;
+}
+
+#main-image {
+    width: 50%;
+    padding: 10px;
 }
 
 /*clear floats*/

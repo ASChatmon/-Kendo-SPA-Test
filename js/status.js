@@ -6,7 +6,7 @@ const STATUSES = {
 };
 
 // TODO: Move this enum to be pulled from some source
-var currentOperationalStatus = STATUSES.RED;
+var currentOperationalStatus = STATUSES.YELLOW;
 
 // data
 
@@ -89,7 +89,6 @@ var indexModel = kendo.observable({
     items: thirdParties,
     services: services
 });
-
 
 
 // Views and layouts
