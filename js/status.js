@@ -1,68 +1,204 @@
 // models / data
 
-var items = new kendo.data.DataSource({
-    schema: 
-    { 
-        model: {} 
+//var items = new kendo.data.DataSource({
+//    schema: 
+//    { 
+//        model: {} 
+//    },
+//    transport: 
+//    { 
+//        read: 
+//        { 
+//            url:  "/data/menu.json", 
+//            dataType: "json" 
+//        } 
+//    }
+//});
+var menu = [
+    {
+        "id": 1,
+        "name": "Sashimi salad",
+        "price": 12.0,
+        "image": "sashimi-salad.jpg",
+        "category": "Cold starters",
+        "description": "Organic greens topped with fresh sashimi, wasabi soy vinaigrette.",
+        "featured": true,
+        "stats": {
+            "protein": 2.9156,
+            "fat": 2.4396,
+            "carbohydrate": 3.8071,
+            "energy": 17.5775,
+            "sugar": 0.3738
+        }
     },
-    transport: 
-    { 
-        read: 
-        { 
-            url:  "/data/menu.json", 
-            dataType: "json" 
-        } 
+    {
+        "id": 2,
+        "name": "Chirashi sushi",
+        "price": 21.0,
+        "image": "chirashi-sushi.jpg",
+        "category": "Cold starters",
+        "description": "Sushi bar variety with sushi rice.",
+        "featured": false,
+        "stats": {
+            "protein": 2.3138,
+            "fat": 0.6041,
+            "carbohydrate": 7.8006,
+            "energy": 7.5314,
+            "sugar": 0.3114
+        }
+    },
+    {
+        "id": 3,
+        "name": "Seaweed salad",
+        "price": 17.0,
+        "image": "seaweed-salad.jpg",
+        "category": "Cold starters",
+        "description": "A nice seaweed salad.",
+        "featured": true,
+        "stats": {
+            "protein": 0.229,
+            "fat": 2.2852,
+            "carbohydrate": 4.8824,
+            "energy": 5.1003,
+            "sugar": 0.0037
+        }
+    },
+    {
+        "id": 4,
+        "name": "Edamame",
+        "price": 4.0,
+        "image": "edamame.jpg",
+        "category": "Warm Starters",
+        "description": "Boiled soy beans with salt ",
+        "featured": true,
+        "stats": {
+            "protein": 0.7436,
+            "fat": 1.9771,
+            "carbohydrate": 0.674,
+            "energy": 17.294,
+            "sugar": 0.1028
+        }
+    },
+    {
+        "id": 5,
+        "name": "Miso soup",
+        "price": 4.0,
+        "image": "miso-soup.jpg",
+        "category": "Warm Starters",
+        "description": "Soy bean soup with Wacame seaweed, tofu and spring onion.",
+        "featured": false,
+        "stats": {
+            "protein": 2.7642,
+            "fat": 2.1552,
+            "carbohydrate": 9.5294,
+            "energy": 9.393,
+            "sugar": 0.1399
+        }
+    },
+    {
+        "id": 6,
+        "name": "Maguro",
+        "price": 12.5,
+        "image": "maguro.jpg",
+        "category": "Sashimi",
+        "description": "Tuna pieces.",
+        "featured": true,
+        "stats": {
+            "protein": 2.2293,
+            "fat": 0.7329,
+            "carbohydrate": 0.0618,
+            "energy": 28.2176,
+            "sugar": 0.4018
+        }
+    },
+    {
+        "id": 7,
+        "name": "Shake",
+        "price": 10.0,
+        "image": "shake.jpg",
+        "category": "Sashimi",
+        "description": "",
+        "featured": false,
+        "stats": {
+            "protein": 1.4804,
+            "fat": 1.4739,
+            "carbohydrate": 0.2237,
+            "energy": 16.9406,
+            "sugar": 0.245
+        }
+    },
+    {
+        "id": 8,
+        "name": "Shiromi",
+        "price": 9.5,
+        "image": "shiromi.jpg",
+        "category": "Sashimi",
+        "description": "White fish pieces.",
+        "featured": false,
+        "stats": {
+            "protein": 0.2814,
+            "fat": 1.3963,
+            "carbohydrate": 1.5973,
+            "energy": 16.4487,
+            "sugar": 0.0509
+        }
+    },
+    {
+        "id": 9,
+        "name": "Tekka maki",
+        "price": 6.0,
+        "image": "tekka-maki.jpg",
+        "category": "Hosomaki",
+        "description": "Tuna roll with wasabi. - 6 pieces",
+        "featured": true,
+        "stats": {
+            "protein": 0.9559,
+            "fat": 1.6395,
+            "carbohydrate": 7.4319,
+            "energy": 9.7847,
+            "sugar": 0.4771
+        }
+    },
+    {
+        "id": 10,
+        "name": "Hosomaki Mix",
+        "price": 17.0,
+        "image": "hosomaki-mix.jpg",
+        "category": "Hosomaki",
+        "description": "18 pieces.",
+        "featured": false,
+        "stats": {
+            "protein": 2.683,
+            "fat": 2.858,
+            "carbohydrate": 1.6309,
+            "energy": 23.8901,
+            "sugar": 0.4839
+        }
+    },
+    {
+        "id": 11,
+        "name": "California rolls",
+        "price": 7.75,
+        "image": "california-rolls.jpg",
+        "category": "Traditionall Rolls",
+        "description": "Crab sticks, avocado and cucumber. - 8 pieces",
+        "featured": true,
+        "stats": {
+            "protein": 0.848,
+            "fat": 0.1205,
+            "carbohydrate": 3.6646,
+            "energy": 18.6541,
+            "sugar": 0.0174
+        }
     }
+];
+var items = new kendo.data.DataSource({
+    data: menu
 });
 
+var operationalStatus = "GREEN";
+
 var cart = kendo.observable({
-    contents: [],
-    cleared: false,
-
-    contentsCount: function() {
-        return this.get("contents").length;
-    },
-
-    add: function(item) {
-        var found = false;
-
-        this.set("cleared", false);
-
-        for (var i = 0; i < this.contents.length; i ++) {
-            var current = this.contents[i];
-            if (current.item === item) {
-                current.set("quantity", current.get("quantity") + 1);
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) {
-            this.contents.push({ item: item, quantity: 1 });
-        }
-    },
-
-    remove: function(item) {
-        for (var i = 0; i < this.contents.length; i ++) {
-            var current = this.contents[i];
-            if (current === item) {
-                this.contents.splice(i, 1);
-                break;
-            }
-        }
-    },
-
-    empty: function() {
-        var contents = this.get("contents");
-        contents.splice(0, contents.length);
-    },
-
-    clear: function() {
-        var contents = this.get("contents");
-        contents.splice(0, contents.length);
-        this.set("cleared", true);
-    },
-
     total: function() {
         var price = 0,
             contents = this.get("contents"),
@@ -81,91 +217,17 @@ var layoutModel = kendo.observable({
     cart: cart
 });
 
-var cartPreviewModel = kendo.observable({
-    cart: cart,
-
-    cartContentsClass: function() {
-        return this.cart.contentsCount() > 0 ? "active" : "empty";
-    },
-
-    removeFromCart: function(e) {
-        this.get("cart").remove(e.data);
-    },
-
-    emptyCart: function() {
-        cart.empty();
-    },
-
-    itemPrice: function(cartItem) {
-        return kendo.format("{0:c}", cartItem.item.price);
-    },
-
-    totalPrice: function() {
-        return this.get("cart").total();
-    },
-
-    proceed: function(e) {
-        this.get("cart").clear();
-        sushi.navigate("/");
-    }
-});
-
 var indexModel = kendo.observable({
     items: items,
     cart: cart,
-
-    addToCart: function(e) {
-        cart.add(e.data);
-    }
+//operationalStatus: operationalStatus,
+    thirdParties: []
 });
 
-var detailModel = kendo.observable({
-    imgUrl: function() {
-        return "/images/200/" + this.get("current").image
-    },
-
-    price: function() {
-        return kendo.format("{0:c}", this.get("current").price);
-    },
-
-    addToCart: function(e) {
-        cart.add(this.get("current"));
-    },
-
-    setCurrent: function(itemID) {
-        this.set("current", items.get(itemID));
-    },
-
-    previousHref: function() {
-        var id = this.get("current").id - 1;
-        if (id === 0) {
-           id = items.data().length - 1;
-        }
-
-        return "#/menu/" + id;
-    },
-
-    nextHref: function() {
-        var id = this.get("current").id + 1;
-
-        if (id === items.data().length) {
-           id = 1;
-        }
-
-        return "#/menu/" + id;
-    },
-
-    kCal: function() {
-        return kendo.toString(this.get("current").stats.energy /  4.184, "0.0000");
-    }
-});
 
 // Views and layouts
 var layout = new kendo.Layout("layout-template", { model: layoutModel });
-var cartPreview = new kendo.Layout("cart-preview-template", { model: cartPreviewModel });
 var index = new kendo.View("index-template", { model: indexModel });
-var checkout = new kendo.View("checkout-template", {model: cartPreviewModel });
-var detail = new kendo.View("detail-template", { model: detailModel });
 
 var sushi = new kendo.Router({
     init: function() {
@@ -174,44 +236,18 @@ var sushi = new kendo.Router({
     }
 });
 
-var viewingDetail = false;
-
 // Routing
 sushi.route("/", function() {
-    console.log("router root route")
-    viewingDetail = false;
+    console.log("router root route");
+
     layout.showIn("#content", index);
-    layout.showIn("#pre-content", cartPreview);
+    
+    var template = kendo.template("<div class='#= status#'>#= status #</div>");
+    var data = { status: "green" }; //A value in JavaScript/JSON
+    var result = template(data); //Pass the data to the compiled template
+    $("#status").html(result); //Append the result
 });
 
-sushi.route("/checkout", function() {
-    viewingDetail = false;
-    layout.showIn("#content", checkout);
-    cartPreview.hide();
-});
-
-sushi.route("/menu/:id", function(itemID) {
-    layout.showIn("#pre-content", cartPreview);
-    var transition = "",
-        current = detailModel.get("current");
-
-    if (viewingDetail && current) {
-        transition = current.id < itemID ? "tileleft" : "tileright";
-    }
-
-    items.fetch(function(e) {
-        if (detailModel.get("current")) { // existing view, start transition, then update content. This is necessary for the correct view transition clone to be created.
-            layout.showIn("#content", detail, transition);
-            detailModel.setCurrent(itemID);
-        } else {
-            // update content first
-            detailModel.setCurrent(itemID);
-            layout.showIn("#content", detail, transition);
-        }
-    });
-
-    viewingDetail = true;
-});
 
 $(function() {
     sushi.start();
