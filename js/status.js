@@ -6,7 +6,7 @@ const operationalStatuses = {
 };
 
 // TODO: Move this enum to be pulled from some source
-var operationalStatus = operationalStatuses.RED;
+var currentOperationalStatus = operationalStatuses.RED;
 
 // data
 
@@ -207,32 +207,36 @@ var items = new kendo.data.DataSource({
     data: menu
 });
 
-// models
-var cart = kendo.observable({
-    total: function() {
-        var price = 0,
-            contents = this.get("contents"),
-            length = contents.length,
-            i = 0;
-
-        for (; i < length; i ++) {
-            price += parseInt(contents[i].item.price) * contents[i].quantity;
-        }
-
-        return kendo.format("{0:c}", price);
+var services = [
+    {
+        "id": 1,
+        "name": "Navigator",
+        "status": GetServiceStatusText(operationalStatuses.GREEN),
+        "info": "Navigator web is up and running",
+        "statusClass": "service-" + operationalStatuses.GREEN
+    },
+    {
+        "id": 2,
+        "name": "Admin",
+        "status": GetServiceStatusText(operationalStatuses.YELLOW),
+        "info": "Admin is always slowwwww",
+        "statusClass": "service-" + operationalStatuses.YELLOW
     }
-});
+];
 
+// models
 var layoutModel = kendo.observable({
-    cart: cart
+    statusClass: 'page-status ' + currentOperationalStatus,
+    statusText: GetStatusText(currentOperationalStatus)
 });
 
 var indexModel = kendo.observable({
     items: items,
-    cart: cart,
+    services: services,
 //operationalStatus: operationalStatus,
     thirdParties: []
 });
+
 
 
 // Views and layouts
@@ -249,14 +253,45 @@ var sushi = new kendo.Router({
 // Routing
 sushi.route("/", function() {
     console.log("router root route");
-
     layout.showIn("#content", index);
-    
-    var template = kendo.template("<div class='page-status #= status#'>#= text #</div>");
-    var data = { status: operationalStatus, text: GetStatusText(operationalStatus) }; 
-    var result = template(data);
-    $("#status").html(result);
+
+    $("#grid").kendoGrid({
+        dataSource: {
+            data: services,
+            schema: {
+                model: {
+                    fields: {
+                        name: { type: "string" },
+                        info: { type: "string" },
+                        status: { type: "string" }
+                    }
+                }
+            }
+        },
+        scrollable: false,
+        sortable: false,
+        filterable: false,
+        rowTemplate: kendo.template($("#rowTemplate").html())
+    });
+
+    $("#grid").kendoTooltip({
+        filter: ".k-icon",
+        content: toolTip,
+        position: "top"
+    });
 });
+
+function toolTip(e) {
+    var grid = $("#grid").getKendoGrid();
+    var row = e.target.closest("tr")[0];
+    var rowIdx = $("tr", grid.tbody).index(row);
+    var data = grid.dataSource.at(rowIdx);
+
+    return kendo.template($("#tooltip-template").html())({
+        value: data.info
+    });
+}
+
 
 function GetStatusText(status) {
     switch (status) {
@@ -266,6 +301,17 @@ function GetStatusText(status) {
             return "Some System Degradation";
         case operationalStatuses.RED:
             return "Severe System Outage";
+    }
+}
+
+function GetServiceStatusText(status) {
+    switch (status) {
+        case operationalStatuses.GREEN:
+            return "Operational";
+        case operationalStatuses.YELLOW:
+            return "Degradation";
+        case operationalStatuses.RED:
+            return "Outage";
     }
 }
 
