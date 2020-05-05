@@ -4,10 +4,11 @@
     <title>Bad Chippy</title>
     <meta charset="utf-8" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link href="http://cdn.kendostatic.com/2020.1.406/styles/kendo.common.min.css" rel="stylesheet">
-    <link href="http://cdn.kendostatic.com/2020.1.406/styles/kendo.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.1.406/styles/kendo.default-v2.min.css" />
+    <!--<link href="http://cdn.kendostatic.com/2020.1.406/styles/kendo.rtl.min.css" rel="stylesheet">-->
     <link href="http://cdn.kendostatic.com/2020.1.406/styles/kendo.default.min.css" rel="stylesheet">
-    <link href="http://cdn.kendostatic.com/2020.1.406/styles/kendo.dataviz.min.css" rel="stylesheet">
-    <link href="http://cdn.kendostatic.com/2020.1.406/styles/kendo.dataviz.default.min.css" rel="stylesheet">
+    <!--<link href="http://cdn.kendostatic.com/2020.1.406/styles/kendo.dataviz.min.css" rel="stylesheet">
+    <link href="http://cdn.kendostatic.com/2020.1.406/styles/kendo.dataviz.default.min.css" rel="stylesheet">-->
     <script src="http://cdn.kendostatic.com/2020.1.406/js/jquery.min.js"></script>
     <script src="http://cdn.kendostatic.com/2020.1.406/js/kendo.ui.core.min.js"></script>
     <script src="http://cdn.kendostatic.com/2020.1.406/js/kendo.all.min.js"></script>
@@ -24,7 +25,6 @@
         </div>
 
         <div id="application"></div>
-
     </div>
     <div class="footer">
         <span id="copyright">Copyright &#169; 2020 Brightwell Payments, Inc. All rights reserved.</span>
@@ -39,7 +39,16 @@
 
             <div id="grid"></div>
 
-            <section id="content"></section>
+            <div id="thirdPartyHealth" class="section">
+                <h1>Third Party Health</h1>
+                <section id="content"></section>
+            </div>
+
+            <div id="incidentTimeline" class="section">
+                <h1>Past Incidents</h1>
+                <div id="timeline"></div>
+            </div>
+
         </div>
     </script>
 
@@ -50,7 +59,7 @@
     <script type="text/x-kendo-template" id="item">
         <li data-bind="attr: { class: status }">
             <span class="view-details">
-                <img class="main-image" src="/images/200/#= image #" alt="#: name#" title="#: name #" />
+                <img class="main-image" src="./images/200/#= image #" alt="#: name#" title="#: name #" />
                 <br />
                 <strong data-bind="text: name"></strong>
             </span>
@@ -73,6 +82,26 @@
         <span>#:value #</span>
     </script>
 
-
+    <script id="incidentTemplate" type="text/x-kendo-template">
+        <div class="k-card-header">
+            <h5 class="k-card-title"><strong>Incident on #= kendo.toString(kendo.parseDate(data.date), "MMM d, yyyy HH:mm")# UTC</strong></h5>
+        </div>
+        <div class="k-card-body">
+            <div class="k-card-description">
+                <div>
+                    # for (var i = 0; i < data.updates.length; i++) { #
+                    <div class="updateData">
+                        <div>
+                            <strong class="updateStatus #= data.updates[i].status #">#= data.updates[i].status #</strong> - #= data.updates[i].description #
+                        </div>
+                        <div class="updateTime">
+                            #= kendo.toString(kendo.parseDate(data.updates[i].date), "MMM d, yyyy HH:mm") # UTC
+                        </div>
+                    </div>
+                    # } #
+                </div>
+            </div>
+        </div>
+    </script>
 </body>
 </html>

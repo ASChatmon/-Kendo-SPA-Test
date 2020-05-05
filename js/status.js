@@ -79,6 +79,102 @@ var services = [
     }
 ];
 
+var pastIncidents = [
+    {
+        "id": 1,
+        "date": "2020-03-31T05:00:00.000",
+        "updates": [
+            {
+                "description": "Something went bump",
+                "status": "Disruption",
+                "statusId": 1,
+                "date": "2020-03-31T08:04:00.000"
+            },
+            {
+                "description": "Identified issue",
+                "status": "Update",
+                "statusId": 2,
+                "date": "2020-03-31T21:00:00.000"
+            },
+            {
+                "description": "Fix in progress",
+                "status": "Update",
+                "statusId": 2,
+                "date": "2020-03-31T21:00:00.000"
+            },
+            {
+                "description": "This incident has been resolved",
+                "status": "Resolved",
+                "statusId": 3,
+                "date": "2020-03-31T23:01:00.000"
+            }
+
+        ]
+    },
+    {
+        "id": 2,
+        "date": "2020-04-08T07:00:00.000",
+        "updates": [
+            {
+                "description": "External API Outage Reported",
+                "status": "Disruption",
+                "statusId": 1,
+                "date": "2020-04-08T07:00:00.000"
+            },
+            {
+                "description": "Investigating",
+                "status": "Update",
+                "statusId": 2,
+                "date": "2020-04-08T07:30:00.000"
+            },
+            {
+                "description": "Investigating",
+                "status": "Update",
+                "statusId": 2,
+                "date": "2020-04-08T10:00:00.000"
+            },
+            {
+                "description": "Investigating",
+                "status": "Update",
+                "statusId": 2,
+                "date": "2020-04-08T13:00:00.000"
+            },
+            {
+                "description": "Bottle neck identified",
+                "status": "Update",
+                "statusId": 2,
+                "date": "2020-04-08T16:45:00.000"
+            },
+            {
+                "description": "Investigating patch options",
+                "status": "Update",
+                "statusId": 2,
+                "date": "2020-04-08T21:45:00.000"
+            }
+
+        ]
+    },
+    {
+        "id": 3,
+        "date": "2020-04-09T00:00:00.000",
+        "updates": [
+            {
+                "description": "Exploring bottle neck patch",
+                "status": "Update",
+                "statusId": 2,
+                "date": "2020-04-09T07:00:00.000"
+            },
+            {
+                "description": "Issue has been resolved",
+                "status": "Resolved",
+                "statusId": 3,
+                "date": "2020-04-09T10:00:00.000"
+            }
+        ]
+    } 
+];
+
+
 // models
 var layoutModel = kendo.observable({
     statusClass: 'page-status ' + currentOperationalStatus,
@@ -130,6 +226,25 @@ sushi.route("/", function() {
         filter: ".k-icon",
         content: toolTip,
         position: "top"
+    });
+
+
+    $("#timeline").kendoTimeline({
+        dataSource: {
+            data: pastIncidents,
+            schema: {
+                model: {
+                    fields: {
+                        date: {
+                            type: "date"
+                        }
+                    }
+                }
+            }
+        },
+        orientation: "vertical",
+        showDateLabels: true,
+        eventTemplate: kendo.template($("#incidentTemplate").html())
     });
 });
 

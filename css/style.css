@@ -2,6 +2,7 @@
     --bw-alert-green: #30996D;
     --bw-alert-yellow: #FFBF00;
     --bw-error-red: #FF0033;
+    --bw-incident-gold: #E9AF32;
 }
 
 /* General Body */
@@ -23,7 +24,6 @@ body {
 html {
     font: 75% 'Droid Sans', sans-serif;
 }
-
 
 .wrapper {
     flex: 1 0 auto;
@@ -161,7 +161,7 @@ h1 a {
     width: 1.5rem;
     height: 1.5rem;
     margin-right: .5em;
-    vertical-align: text-bottom;
+    vertical-align: text-bottom;se
     background-color: white;
 }
 
@@ -169,6 +169,13 @@ h1 a {
 a {
     text-decoration: none;
     color: #000;
+}
+.section {
+    padding-top: 45px;
+}
+.section h1 {
+   padding-bottom: 15px;
+   font-size: 20px;
 }
 
 
@@ -283,6 +290,66 @@ h1, h2, h3, #main-nav, #main-nav li, ul, ul li {
 .main-image {
     width: 50%;
     padding: 10px;
+}
+
+
+/* Past Incidents Section */
+.k-timeline-flag-wrap {
+    display: none!important;
+}
+.k-timeline-event{
+    width:95%!important;
+}
+.k-timeline-card,
+.k-card {
+    width: inherit !important;
+}
+.k-card-header{
+
+}
+.k-card-title {
+    font-size: 20px !important;
+    color: var(--bw-incident-gold) !important;
+    padding-top: 8px;
+    padding-left: 10px;
+    text-decoration: underline;
+}
+
+.k-card-header,
+.k-timeline-card-callout.k-card-callout.k-callout-w,
+.k-card {
+    background-color: whitesmoke !important;
+}
+.k-timeline-date-wrap {
+    font-size: 18px;
+}
+
+.k-timeline-circle {
+    position: absolute !important;
+    background-color: var(--bw-incident-gold) !important;
+}
+
+.k-timeline .k-timeline-circle::after{
+    background: url(images/BigCheck.svg) center center !important;
+    background-size: 1.5rem;
+    background-repeat: no-repeat;
+    background-color: purple;
+}
+.updateData {
+    padding: 5px 10px;
+}
+.k-card-description {
+    font-size: 18px;
+}
+.updateStatus.Disruption {
+    color: var(--bw-error-red) !important;
+}
+.updateStatus.Resolved {
+    color: var(--bw-alert-green);
+}
+.updateTime{
+    color: dimgray;
+    font-size:14px;
 }
 
 /*clear floats*/
