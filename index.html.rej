@@ -1,0 +1,9 @@
+diff a/index.html b/index.html	(rejected hunks)
+@@ -4,7 +4,6 @@
+     <title>Bad Chippy</title>
+     <meta charset="utf-8" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+     <link href="http://cdn.kendostatic.com/2020.1.406/styles/kendo.common.min.css" rel="stylesheet">
+-    <link href="http://cdn.kendostatic.com/2020.1.406/styles/kendo.rtl.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.1.406/styles/kendo.default-v2.min.css" />
+     <!--<link href="http://cdn.kendostatic.com/2020.1.406/styles/kendo.rtl.min.css" rel="stylesheet">-->
+     <link href="http://cdn.kendostatic.com/2020.1.406/styles/kendo.default.min.css" rel="stylesheet">
