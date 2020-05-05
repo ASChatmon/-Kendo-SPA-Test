@@ -232,6 +232,9 @@ sushi.route("/", function() {
     $("#timeline").kendoTimeline({
         dataSource: {
             data: pastIncidents,
+            sort: {
+                field: "date", dir: "desc"
+            },
             schema: {
                 model: {
                     fields: {
